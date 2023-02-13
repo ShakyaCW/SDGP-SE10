@@ -1,6 +1,6 @@
 # Mr. Cinephile
 
-# Brief explanation about the problem & the project
+# Brief explanation about the problem
 People are having difficulty recalling the exact names of movies and TV shows when they want
 to re-watch them, but they can recall a summary of the plot. People are accustomed to taking
 several different actions as a solution to this issue. Certain community forums found in social
