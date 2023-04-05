@@ -54,7 +54,7 @@ def getValue():
 
     # wikipedia movie plots with summarization dataset (max 128 tokens): https://www.kaggle.com/gabrieltardochi/wikipedia-movie-plots-with-plot-summaries
     # original wikipedia movie plots dataset (no summarization): https://www.kaggle.com/jrobischon/wikipedia-movie-plots
-    movies = pd.read_csv('C:/Users/ASUS/Desktop/SE10 - Copy/datasets/wiki_movie_plots_deduped_with_summaries.csv', usecols=['Title','Year', 'Origin','Director','Cast','Genre', 'PlotSummary'])
+    movies = pd.read_csv('C:/Users/ASUS/Desktop/SDGP-SE10/datasets/wiki_movie_plots_deduped_with_summaries.csv', usecols=['Title','Year', 'Origin','Director','Cast','Genre', 'PlotSummary'])
     movies.drop_duplicates(subset='PlotSummary', inplace=True)
     movies.reset_index(drop=True, inplace=True)
 
