@@ -1,0 +1,44 @@
+/* Style the form */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+body {
+  background-image:linear-gradient(rgba(0,0,0,0.50),rgba(0, 0, 0, 0.50)),url(../img/bg4.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+h1 {
+  text-align: center;
+  padding-top: 40px;
+  color: beige;
+}
+.contactform {
+  text-decoration: #ccc;
+}
