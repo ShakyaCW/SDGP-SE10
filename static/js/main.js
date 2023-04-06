@@ -149,3 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+
+searchInput.addEventListener("input", () => {
+  if (searchInput.value.trim() === "") {
+    searchButton.disabled = true;
+  } else {
+    searchButton.disabled = false;
+  }
+});

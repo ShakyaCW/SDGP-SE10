@@ -8,12 +8,17 @@
 </head>
 <body>
 
+    <!-- <div id="preloader"></div> -->
+
     <div id="results" style="display:none;">{{result}}</div>
+
+    
     
     <header>
-        <form  id="form">
-            <input type="text" placeholder="Search" id="search" class="search">
-        </form>
+        <form id="form" method="POST" action=".">
+            <input type="text" class="search-txt-input" name="userInput" id="search-input">
+            <button type="submit" class="btn" id="search-button" disabled>Search</button>
+	</form>
     </header>
     <div id="tags"></div>
     <div id="myNav" class="overlay">
@@ -29,6 +34,8 @@
         <a href="javascript:void(0)" class="arrow right-arrow" id="right-arrow" >&#8658;</a>
 
       </div>
+
+    <main2 class="movie-container" id="main2"></main2>
     <main id="main"></main>
     <div class="pagination">
         <div class="page" id="prev">Previous Page</div>
@@ -36,6 +43,8 @@
         <div class="page" id="next">Next Page</div>
 
     </div>
+
+    <div id="preloader"></div>
 
     <script src="{{ url_for('static', filename='js/script.js')}}"></script>
     

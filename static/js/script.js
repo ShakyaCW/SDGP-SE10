@@ -1,16 +1,36 @@
+//TMDB 
 
 const API_KEY = 'api_key=1cf50e6248dc270629e802686245c2c8';
-console.log(process.env);
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?'+API_KEY;
+
+// var myVar;
+
+// myVar = JSON.parse('{{ jsonMovie|safe }}');
+
+// fetch('movies.json')
+//   .then(response => response.json())
+//   .then(data => {
+//     for (let key in data) {
+//       console.log(`${key}: ${data[key]}`);}
+//   })
+//   .catch(error => console.error(error)); // handle errors
+// for (var key in myVar) {
+//   console.log(key + ": " + my_data[key]);
+// }
 
 var myData = document.getElementById('results');
 var jsonData = myData.innerHTML;
 var parsedData = JSON.parse(jsonData);
 console.log(parsedData);
 console.log(parsedData[0]);
+
+// for (var key in parsedData) {
+//      console.log(key + ": " + parsedData[key]);
+//      displayPoster(key,parsedData[key]);
+//    }
    
 
 const genres = [
@@ -180,6 +200,17 @@ const titles = [];
 const votes = [];
 const overviews = [];
 
+
+
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=Dune&year=2021');
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=Her&year=2013');
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=Changeling&year=2008');
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=Violent+night&year=2022');
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=The+batman&year=2022');
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=Troll+hunter&year=2010');
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=Cache&year=2005');
+// getMovies('http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=Wolfwalkers&year=2020');
+
 var count = 0;
 
 function displayPoster(name, year){
@@ -205,9 +236,22 @@ function getMovies(url,movieName, movieYear) {
   
   lastUrl = url;
     fetch(url).then(res => res.json()).then(data => {
+        // console.log(data.results)
+        // const f = data[0];
+        // console.log(f);
+        // const {title, poster_path, vote_average, overview, id} = data[0];
+        // const ass = {title: title, poster_path: poster_path, vote_average: vote_average, overview: overview, id: id};
+        // console.log(typeof a);
+        // finalData.a = ass;
         
+        // console.log(data.results[0]);
+        // var title1 = String(data.results[0][title])
+        // console.log(title1)
+        // sleep(100);
         console.log ( data.results[0]);
-        
+        // if (typeof data.results[0][title] == 'undefined') {
+        //   return;
+        // }
         if(data.results[0] !== null && data.results[0][poster_path] !== null){
         var {poster_path, vote_average, overview, id} = data.results[0];
         finalData.push(id);
@@ -215,10 +259,13 @@ function getMovies(url,movieName, movieYear) {
         titles.push(movieName);
         votes.push(vote_average);
         overviews.push(overview);
+        // showMovies(data.results[0]);
 
+         //const {title, poster_path, vote_average, overview, id} = movie;
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
         
+        //<img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
         var link = "https://image.tmdb.org/t/p/w500".concat(poster_path);
         
         
@@ -237,7 +284,7 @@ function getMovies(url,movieName, movieYear) {
                 <h3>Overview</h3>
                 ${overview}
                 <br/> 
-                <button class="know-more" id="${id}">Know More</button
+                <button class="know-more" id="${id}">View Trailer</button
             </div>
         
         `
@@ -284,8 +331,73 @@ function sleep(ms) {
 function showMovies(data) {
     main.innerHTML = '';
 
+    // const {title, poster_path, vote_average, overview, id} = data;
+    //     const movieEl = document.createElement('div');
+    //     movieEl.classList.add('movie');
+    //     movieEl.innerHTML = `
+    //          <img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
+             
+
+    //         <div class="movie-info">
+    //             <h3>${title}</h3>
+    //             <span class="${getColor(vote_average)}">${vote_average}</span>
+    //         </div>
+
+    //         <div class="overview">
+
+    //             <h3>Overview</h3>
+    //             ${overview}
+    //             <br/> 
+    //             <button class="know-more" id="${id}">Know More</button
+    //         </div>
+        
+    //     `
+
+    //     main.appendChild(movieEl);
+
+    //     document.getElementById(id).addEventListener('click', () => {
+    //       console.log(id)
+    //       openNav(movie)
+    //     })
+
     var cc = 0;
     posters.forEach(poster => {
+
+      
+        // //const {title, poster_path, vote_average, overview, id} = movie;
+        // const movieEl = document.createElement('div');
+        // movieEl.classList.add('movie');
+        
+        // //<img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
+        // var link = "https://image.tmdb.org/t/p/w500".concat(poster);
+        
+        
+        // movieEl.innerHTML = `
+        //      <img src=${link} alt=${titles[c]}>
+             
+        //      <div class="movie-info">
+        //         <h3>${titles[cc]}</h3>
+        //         <span class="${getColor(votes[cc])}">${votes[cc]}</span>
+                
+        //     </div>
+
+        //     <div class="overview">
+
+        //         <h3>Overview</h3>
+        //         ${overviews[cc]}
+        //         <br/> 
+        //         <button class="know-more" id="${finalData[cc]}">Know More</button
+        //     </div>
+        
+        // `
+
+        // main.appendChild(movieEl);
+
+        // document.getElementById(finalData[cc]).addEventListener('click', () => {
+        //   console.log(finalData[cc])
+        //   openNav(poster)
+        // })
+        // cc = cc+1;
     }
     )
     
@@ -442,6 +554,10 @@ function firstDiv(url,movieName){
         if(data.results[0] !== null && data.results[0][poster_path] !== null){
         var {poster_path, vote_average, overview, id} = data.results[0];
         
+        
+        
+        
+        //<img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
         var link = "https://image.tmdb.org/t/p/w500".concat(poster_path);
         
         
@@ -458,7 +574,18 @@ function firstDiv(url,movieName){
             <p class="movie-summary"><strong>Summary:</strong>${"  "+ overview}</p>
             </div>
 
-        ` 
+        `
+
+        
+
+        
+        
+      
+       
+
+        
+
+        
       }
 
       
@@ -477,7 +604,11 @@ for (let i = 0; i < parsedData.length; i++) {
   });
 };
 
-
+// for (var key in parsedData) {
+//   console.log(key + ": " + parsedData[key]);
+//   displayPoster(key,parsedData[key]);
+//   wait (100);
+// }
 
 var loader = document.getElementById("preloader");
 window.addEventListener("load", function(){
@@ -485,4 +616,15 @@ window.addEventListener("load", function(){
 })
 
 console.log(parsedData);
+
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-button");
+
+searchInput.addEventListener("input", () => {
+  if (searchInput.value.trim() === "") {
+    searchButton.disabled = true;
+  } else {
+    searchButton.disabled = false;
+  }
+});
 

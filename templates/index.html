@@ -47,8 +47,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">How to Use</a></li>
-          <li><a href="services.html">Feedback</a></li>
+          <li><a href="{{ url_for('use') }}">How to Use</a></li>
+          <li><a href="{{ url_for('contact') }}">Feedback</a></li>
           <li><a href="pricing.html">About Us</a></li>
           <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -88,8 +88,8 @@ Describe the movie as you can remember it and Mr. Cinephile will find it for you
             </div>
           
           <form method="POST" action="." class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
-            <input type="text" name="userInput" class="form-control" placeholder="Describe here...">
-            <button type="submit" class="btn btn-primary">Search</button>
+            <input type="text" name="userInput" class="form-control" id="search-input" placeholder="Describe here...">
+            <button type="submit" class="btn btn-primary" id="search-button" disabled>Search</button>
           </form>
 
           <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
