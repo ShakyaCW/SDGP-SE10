@@ -13,10 +13,10 @@ def test_index_page(client):
     assert response.status_code == 200
 
 def test_getValue(client):
-    response = client.post('/', data={'userInput': 'In the Antarctic, after an expedition with Dr. Davis McClaren, the sled dog trainer Jerry Shepherd has to leave the polar base with his colleagues due to the proximity of a heavy snow storm. He ties his dogs to be rescued after, but the mission is called-off and the dogs are left alone at their own fortune. For six months, Jerry tries to find a sponsor for a rescue mission.'})
+    response = client.post('/', data={'userInput': 'person can communicate with animals'})
     assert response.status_code == 200
     json_data = response.get_data(as_text=True)
     print('Response data:', json_data)
-    assert b'"title": "Eight Below"' in response.data
+    assert b'"title": "Dr. Dolittle"' in response.data
 
 
