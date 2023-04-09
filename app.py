@@ -40,7 +40,6 @@ def getValue():
     from timeit import default_timer as timer
     import numpy as np
     import pandas as pd
-    import faiss
     import torch
     from sentence_transformers import SentenceTransformer
     from scipy.spatial.distance import cdist as scipy_cdist
