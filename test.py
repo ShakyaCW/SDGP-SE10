@@ -19,8 +19,4 @@ def test_getValue(client):
     print('Response data:', json_data)
     assert b'"title": "Eight Below"' in response.data
 
-# def test_invalid_input(client):
-#     response = client.post('/', data={'userInput': ''})
-#     assert response.status_code == 400
-
 
