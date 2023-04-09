@@ -52,7 +52,7 @@ def getValue():
 
 
    
-    movies = pd.read_csv('C:/Users/ASUS/Desktop/SE10-Copy/datasets/wiki_movie_plots_deduped_with_summaries.csv', usecols=['Title','Year', 'Origin','Director','Cast','Genre', 'PlotSummary'])
+    movies = pd.read_csv('./datasets/wiki_movie_plots_deduped_with_summaries.csv', usecols=['Title','Year', 'Origin','Director','Cast','Genre', 'PlotSummary'])
     movies.drop_duplicates(subset='PlotSummary', inplace=True)
     movies.reset_index(drop=True, inplace=True)
 
