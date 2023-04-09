@@ -24,8 +24,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run tests
-      run: |
-        pytest tests/
+      run: python -m pytest test.py
 
 #     - name: Build and deploy app
 #       run: |

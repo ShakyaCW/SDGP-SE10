@@ -116,8 +116,8 @@ def getValue():
     
     jsonMovies = json.dumps(movieList, indent=2)
     
-    return render_template('page2.html', result=jsonMovies)
-    #return (jsonMovies)
+    # return render_template('page2.html', result=jsonMovies)
+    return (jsonMovies)
 
 
 
