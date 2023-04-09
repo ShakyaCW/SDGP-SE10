@@ -13,6 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+     # Set environment variables
+    - name: Set environment variables
+      run: |
+        echo "export MY_VAR=value" >> $GITHUB_ENV
+        echo "export ANOTHER_VAR=value2" >> $GITHUB_ENV
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
