@@ -1,4 +1,6 @@
 //TMDB 
+// import { keyImport } from '../../hidekey.js';
+// keyImport();
 
 const API_KEY = 'api_key=1cf50e6248dc270629e802686245c2c8';
 const BASE_URL = 'https://api.themoviedb.org/3';
