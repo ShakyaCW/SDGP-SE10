@@ -17,7 +17,9 @@ html {
 body{
     /* background-color: var(--primary-color); */
     background-image:linear-gradient(rgba(0,0,0,0.50),rgba(0, 0, 0, 0.50)),url(../img/bg4.jpg);
-    background-repeat:repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -73,7 +75,7 @@ main{
 }
 
 .movie-info{
-    color:#eee;
+    /* color:#eee; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -332,7 +334,7 @@ main{
   /* border-top-left-radius: 10px 10px;
   border-bottom-left-radius: 10px 10px; */
   border-radius: 8px;
-  width: 500px;
+  width: 800px;
 }
 .btn {
   padding: 12px 16px;
@@ -361,5 +363,25 @@ main{
 .btn::-moz-focus-inner {
   border: 0;
 }
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.box1, .box2 {
+    
+    width: 100%;
+    height: 70px;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+
+  
+  
+  
+  
+  
+  
 
 

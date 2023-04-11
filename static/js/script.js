@@ -2,6 +2,7 @@
 // import { keyImport } from '../../hidekey.js';
 // keyImport();
 
+// Set up constants for the API endpoints and image URLs
 const API_KEY = 'api_key=1cf50e6248dc270629e802686245c2c8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
@@ -14,7 +15,7 @@ var parsedData = JSON.parse(jsonData);
 console.log(parsedData);
 console.log(parsedData[0]);
    
-
+// Define an array of genres and a function to display them as clickable tags
 const genres = [
     {
       "id": 28,
@@ -94,6 +95,7 @@ const genres = [
     }
   ]
 
+// Get references to various DOM elements
 const main = document.getElementById('main');
 const form =  document.getElementById('form');
 const search = document.getElementById('search');
@@ -104,6 +106,7 @@ const prev = document.getElementById('prev')
 const next = document.getElementById('next')
 const current = document.getElementById('current')
 
+// Set up variables for pagination and genre selection
 var currentPage = 1;
 var nextPage = 2;
 var prevPage = 3;
@@ -115,10 +118,12 @@ var selectedGenre = []
 function setGenre() {
     tagsEl.innerHTML= '';
     genres.forEach(genre => {
+      // Create a new tag element for each genre
         const t = document.createElement('div');
         t.classList.add('tag');
         t.id=genre.id;
         t.innerText = genre.name;
+        // When the tag is clicked, toggle its selection status
         t.addEventListener('click', () => {
             if(selectedGenre.length == 0){
                 selectedGenre.push(genre.id);
@@ -135,8 +140,10 @@ function setGenre() {
             }
             console.log(selectedGenre)
             getMovies(API_URL + '&with_genres='+encodeURI(selectedGenre.join(',')))
+            // Refresh the movie list based on the selected genre(s)
             highlightSelection()
         })
+        // Add the tag to the DOM
         tagsEl.append(t);
     })
 }
@@ -176,6 +183,7 @@ function clearBtn(){
     
 }
 
+// Set up arrays to hold movie data
 const finalData = [];
 const posters = [];
 const titles = [];
@@ -184,12 +192,15 @@ const overviews = [];
 
 var count = 0;
 
-function displayPoster(name, year){
+/* The displayPoster function takes a movie name, year, and percentage as input. 
+It formats the movie name, sends a GET request to the TMDb API to get the movie poster, and then calls the getMovies function to add the movie data to arrays and display the movie information on the page.*/
+function displayPoster(name, year,percentage){
   var movName = name;
   var movYear = year
+  var similarity = percentage
   var modifiedName = name.replace(/ /g, '+');
   var urlToPoster = 'http://api.themoviedb.org/3/search/movie?api_key=1cf50e6248dc270629e802686245c2c8&query=' + modifiedName + '&year=' + year;
-  getMovies(urlToPoster, movName, movYear);
+  getMovies(urlToPoster, movName, movYear, similarity);
 
   if (count == 0){
     firstDiv(urlToPoster,movName);
@@ -202,7 +213,10 @@ function displayPoster(name, year){
 
 var c = 0;
 
-function getMovies(url,movieName, movieYear) {
+/*The getMovies function takes a TMDb API URL, a movie name, a movie year, and a percentage as input. 
+It sends a GET request to the TMDb API using the URL, parses the response data to extract the poster path, vote average, overview, and ID of the first search result, and then adds these data to arrays. 
+It then creates an HTML element to display the movie information on the page, */
+function getMovies(url,movieName, movieYear, percentage) {
   
   lastUrl = url;
     fetch(url).then(res => res.json()).then(data => {
@@ -227,10 +241,13 @@ function getMovies(url,movieName, movieYear) {
              <img src=${link} alt=${movieName}>
              
              <div class="movie-info">
+                <div class="box1">
+                <span class="${getColor(vote_average)}">Matching : ${percentage}%</span></div>
+                <div class="box2">
                 <h3>${movieName}</h3>
-                <h3>${movieYear}</h3>
-                <span class="${getColor(vote_average)}">${vote_average}</span>
-                
+                <h4>${movieYear}</h4>
+                </div>
+            
             </div>
 
             <div class="overview">
@@ -295,7 +312,9 @@ function showMovies(data) {
 }
 
 const overlayContent = document.getElementById('overlay-content');
-/* Open when someone clicks on the span element */
+/* The openNav function takes a movie object as input. 
+It sends a GET request to the TMDb API to get the video data for the movie, and then creates an HTML element to display the video(s) in a fullscreen overlay. 
+If there are no videos for the movie, it displays a "No Results Found" message in the overlay. */
 function openNav(movie) {
   let id = movie.id;
   fetch(BASE_URL + '/movie/'+id+'/videos?'+API_KEY).then(res => res.json()).then(videoData => {
@@ -341,7 +360,7 @@ function openNav(movie) {
   })
 }
 
-/* Close when someone clicks on the "x" symbol inside the overlay */
+/* The closeNav function closes the fullscreen overlay. */
 function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
@@ -398,13 +417,7 @@ rightArrow.addEventListener('click', () => {
 
 
 function getColor(vote) {
-    if(vote>= 8){
-        return 'green'
-    }else if(vote >= 5){
-        return "orange"
-    }else{
-        return 'red'
-    }
+    return 'orange'
 }
 
 prev.addEventListener('click', () => {
@@ -473,7 +486,7 @@ var promise = Promise.resolve();
 for (let i = 0; i < parsedData.length; i++) {
   promise = promise.then(function () {
     console.log(parsedData[i].title + ": " + parsedData[i].year);
-    displayPoster(parsedData[i].title,+ parsedData[i].year);
+    displayPoster(parsedData[i].title, parsedData[i].year, Math.ceil(parsedData[i].percentage*100));
     return new Promise(function (resolve) {
       setTimeout(resolve, interval);
     });
