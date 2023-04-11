@@ -110,17 +110,18 @@ def getValue():
         movieDict["cast"] = cast
         movieDict["genre"] = genre
 
-        movieList.append(movieDict)
-
         most_similar_title_sim = np.max(similarities, axis=0)[best_sim_idx] 
         print(f'"{most_similar_title}" - {intYear} - {most_similar_title_sim}')
+
+        movieDict["percentage"] = most_similar_title_sim
+        movieList.append(movieDict)
 
 
     
     jsonMovies = json.dumps(movieList, indent=2)
     
-    # return render_template('page2.html', result=jsonMovies)
-    return (jsonMovies)
+    return render_template('page2.html', result=jsonMovies)
+    # return (jsonMovies)
 
 
 
