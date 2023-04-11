@@ -32,6 +32,10 @@ def contact():
 def use():
     return render_template('how_to_use.html')
 
+@app.route('/aboutus')
+def about():
+    return render_template('studentdetails.html')
+
 @app.route('/', methods = ['POST'])
 def getValue():
     input = request.form['userInput']
