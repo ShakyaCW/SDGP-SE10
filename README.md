@@ -5,7 +5,7 @@ People are having difficulty recalling the exact names of movies and TV shows wh
 to re-watch them, but they can recall a summary of the plot. People are accustomed to taking
 several different actions as a solution to this issue. Certain community forums found in social
 media such as Facebook and Reddit can be cited as examples. 'Tip of My Tongue' ( https://www.reddit.com/r/tipofmytongue/ )Reddit
-thread and 'Incredibly Strange Films' Facebook group can be given as examples to those
+thread and 'Incredibly Strange Films' ( https://web.facebook.com/groups/incrediblystrangefilms/?_rdc=1&_rdr )Facebook group can be given as examples to those
 community forums. In those forums, there are thousands of requests to find a movie that
 matches up to a particular description. In some cases, they are answered, but it took a long
 time to get such a correct guess. A large number of requests that go unanswered can also be
